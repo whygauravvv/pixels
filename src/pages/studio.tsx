@@ -106,7 +106,7 @@ export function Studio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white py-10 px-6">
+    <div className="min-h-screen bg-neutral-950 text-white py-10 px-6">
       <BloomFilter />
 
       <header className="text-center mb-10">

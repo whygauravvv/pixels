@@ -17,7 +17,7 @@ const CELLS = Array.from({ length: 9 }, (_, i) => i);
 export function LoaderCard({ pattern, color = "sky" }: LoaderCardProps) {
   const colorClass = COLOR_CLASS[color];
   return (
-    <div className="flex items-center relative justify-center w-full aspect-square border border-neutral-800/30  p-4">
+    <div className="flex items-center relative justify-center w-full aspect-square border border-neutral-800/30 p-4 ">
       <div
         className={`animated-loader  bloom ${pattern} grid grid-cols-3 ${colorClass} *:size-4  gap-0.5 w-fit`}
       >
