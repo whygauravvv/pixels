@@ -4,6 +4,11 @@
   overflow: visible;
 }
 
+/* When bloom is disabled globally, skip the filter for all loaders */
+.bloom-disabled .animated-loader.bloom {
+  filter: none;
+}
+
 /* Shared: all loaders use same opacity pulse, 600ms */
 .animated-loader div {
   animation: loader-pulse 600ms ease-in-out infinite;
@@ -12,7 +17,7 @@
 @keyframes loader-pulse {
   0%,
   100% {
-    opacity: 0;
+    opacity: 0.1;
   }
   50% {
     opacity: 1;

@@ -1,38 +1,34 @@
 import { useState } from "react";
-import { BloomFilter } from "../components/BloomFilter";
-import { LoaderCard } from "../components/LoaderCard";
+import { BloomFilter } from "../components/bloom-filter";
+import { LoaderCard } from "../components/loader-cards";
 import { PATTERNS } from "../data/patterns";
 
 export function Gallery() {
-  const [hoverOnly, setHoverOnly] = useState(false);
+  const [hoverOnly, setHoverOnly] = useState(true);
 
   return (
     <div
-      className={`min-h-screen bg-black text-white py-10 px-6 ${
+      className={`min-h-screen bg-neutral-950 text-white p-10 overscroll-y-none ${
         hoverOnly ? "hover-only-animate" : ""
       }`}
     >
+      {/* Very performance heavy, so disabled by default */}
       <BloomFilter />
 
-      <header className="text-center mb-12">
-        <h1 className="text-2xl font-semibold text-white">Loader patterns</h1>
-        <p className="text-stone-500 text-sm mt-1">
-          3×3 grid patterns with bloom
+      <header className="mb-10">
+        <div className="flex items-center  gap-2 ">
+          <img src="/logo.svg" alt="Pixels" className="w-6 h-6" />
+          <h1 className="text-xl font-medium text-white tracking-tight">
+            Pixels - Beautiful loaders for the web.
+          </h1>
+        </div>
+        <p className="text-neutral-500 text-sm mt-1 max-w-sm">
+          Beautiful vanilla css loaders you can use in your web proejcts.
+          Generate your own loader too in a few clicks.
         </p>
-        <label className="mt-4 inline-flex items-center gap-2 cursor-pointer select-none">
-          <input
-            type="checkbox"
-            checked={hoverOnly}
-            onChange={(e) => setHoverOnly(e.target.checked)}
-            className="rounded border-stone-500 bg-stone-800 text-sky-500 focus:ring-sky-500"
-          />
-          <span className="text-sm text-stone-400">
-            Hover to animate (pause all otherwise)
-          </span>
-        </label>
       </header>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-8 justify-items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6  justify-items-center mx-auto">
         {PATTERNS.map(({ pattern, color }) => (
           <LoaderCard key={pattern} pattern={pattern} color={color} />
         ))}

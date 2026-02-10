@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { BloomFilter } from "../components/BloomFilter";
+import { BloomFilter } from "../components/bloom-filter";
 import type { LoaderColor } from "../data/patterns";
 
 const COLORS: LoaderColor[] = ["sky", "amber", "rose", "emerald"];
@@ -17,7 +17,7 @@ const MAX_STEP = 9;
 /** Convert preset delays (ms, for 600ms cycle) to steps 1–9. */
 function delaysToSteps(delays: number[], _durationMs: number = 600): number[] {
   return delays.map((d) =>
-    d === 0 ? 1 : Math.min(MAX_STEP, Math.round((d / 600) * 8) + 1)
+    d === 0 ? 1 : Math.min(MAX_STEP, Math.round((d / 600) * 8) + 1),
   );
 }
 
@@ -31,13 +31,13 @@ function delaysToSteps(delays: number[], _durationMs: number = 600): number[] {
 function stepToDelayMs(
   step: number,
   durationMs: number,
-  allSteps: number[]
+  allSteps: number[],
 ): number {
   if (step < 1) return 0;
 
   // Unique, sorted list of steps that are actually used (ignoring 0 / off).
   const usedSteps = Array.from(new Set(allSteps.filter((s) => s > 0))).sort(
-    (a, b) => a - b
+    (a, b) => a - b,
   );
 
   if (usedSteps.length === 0) return 0;
