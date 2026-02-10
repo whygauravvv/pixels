@@ -1,0 +1,755 @@
+/* Bloom: only on the loader grid pixels (threshold bright → blur 2× → blend back) */
+.animated-loader.bloom {
+  filter: url(#bloom);
+  overflow: visible;
+}
+
+/* Shared: all loaders use same opacity pulse, 600ms */
+.animated-loader div {
+  animation: loader-pulse 600ms ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* wave-lr: left → right (columns 0, 100, 200ms) */
+.animated-loader.wave-lr div:nth-child(3n + 1) {
+  animation-delay: 0ms;
+}
+.animated-loader.wave-lr div:nth-child(3n + 2) {
+  animation-delay: 100ms;
+}
+.animated-loader.wave-lr div:nth-child(3n) {
+  animation-delay: 200ms;
+}
+
+/* wave-rl: right → left */
+.animated-loader.wave-rl div:nth-child(3n + 1) {
+  animation-delay: 200ms;
+}
+.animated-loader.wave-rl div:nth-child(3n + 2) {
+  animation-delay: 100ms;
+}
+.animated-loader.wave-rl div:nth-child(3n) {
+  animation-delay: 0ms;
+}
+
+/* wave-tb: top → bottom (rows 0, 100, 200ms) */
+.animated-loader.wave-tb div:nth-child(-n + 3) {
+  animation-delay: 0ms;
+}
+.animated-loader.wave-tb div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.wave-tb div:nth-child(n + 7) {
+  animation-delay: 200ms;
+}
+
+/* wave-btt: bottom → top */
+.animated-loader.wave-btt div:nth-child(-n + 3) {
+  animation-delay: 200ms;
+}
+.animated-loader.wave-btt div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.wave-btt div:nth-child(n + 7) {
+  animation-delay: 0ms;
+}
+
+/* pulse: all in sync */
+.animated-loader.pulse div {
+  animation-delay: 0ms;
+}
+
+/* checkerboard: alternating cells */
+.animated-loader.checkerboard div:nth-child(odd) {
+  animation-delay: 0ms;
+}
+.animated-loader.checkerboard div:nth-child(even) {
+  animation-delay: 150ms;
+}
+
+/* center-out: center first, then edges, then corners */
+.animated-loader.center-out div:nth-child(5) {
+  animation-delay: 0ms;
+}
+.animated-loader.center-out div:nth-child(2),
+.animated-loader.center-out div:nth-child(4),
+.animated-loader.center-out div:nth-child(6),
+.animated-loader.center-out div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.center-out div:nth-child(1),
+.animated-loader.center-out div:nth-child(3),
+.animated-loader.center-out div:nth-child(7),
+.animated-loader.center-out div:nth-child(9) {
+  animation-delay: 200ms;
+}
+
+/* diagonal + all other patterns - full file from parent project */
+.animated-loader.diagonal div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.diagonal div:nth-child(2),
+.animated-loader.diagonal div:nth-child(4) {
+  animation-delay: 100ms;
+}
+.animated-loader.diagonal div:nth-child(3),
+.animated-loader.diagonal div:nth-child(5),
+.animated-loader.diagonal div:nth-child(7) {
+  animation-delay: 200ms;
+}
+.animated-loader.diagonal div:nth-child(6),
+.animated-loader.diagonal div:nth-child(8) {
+  animation-delay: 300ms;
+}
+.animated-loader.diagonal div:nth-child(9) {
+  animation-delay: 400ms;
+}
+
+.animated-loader.wave-bt div:nth-child(-n + 3) {
+  animation-delay: 200ms;
+}
+.animated-loader.wave-bt div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.wave-bt div:nth-child(n + 7) {
+  animation-delay: 0ms;
+}
+
+.animated-loader.diagonal-tl div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.diagonal-tl div:nth-child(2),
+.animated-loader.diagonal-tl div:nth-child(4) {
+  animation-delay: 100ms;
+}
+.animated-loader.diagonal-tl div:nth-child(3),
+.animated-loader.diagonal-tl div:nth-child(5),
+.animated-loader.diagonal-tl div:nth-child(7) {
+  animation-delay: 200ms;
+}
+.animated-loader.diagonal-tl div:nth-child(6),
+.animated-loader.diagonal-tl div:nth-child(8) {
+  animation-delay: 300ms;
+}
+.animated-loader.diagonal-tl div:nth-child(9) {
+  animation-delay: 400ms;
+}
+
+.animated-loader.diagonal-tr div:nth-child(3) {
+  animation-delay: 0ms;
+}
+.animated-loader.diagonal-tr div:nth-child(2),
+.animated-loader.diagonal-tr div:nth-child(6) {
+  animation-delay: 100ms;
+}
+.animated-loader.diagonal-tr div:nth-child(1),
+.animated-loader.diagonal-tr div:nth-child(5),
+.animated-loader.diagonal-tr div:nth-child(9) {
+  animation-delay: 200ms;
+}
+.animated-loader.diagonal-tr div:nth-child(4),
+.animated-loader.diagonal-tr div:nth-child(8) {
+  animation-delay: 300ms;
+}
+.animated-loader.diagonal-tr div:nth-child(7) {
+  animation-delay: 400ms;
+}
+
+.animated-loader.diagonal-bl div:nth-child(7) {
+  animation-delay: 0ms;
+}
+.animated-loader.diagonal-bl div:nth-child(4),
+.animated-loader.diagonal-bl div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.diagonal-bl div:nth-child(1),
+.animated-loader.diagonal-bl div:nth-child(5),
+.animated-loader.diagonal-bl div:nth-child(9) {
+  animation-delay: 200ms;
+}
+.animated-loader.diagonal-bl div:nth-child(2),
+.animated-loader.diagonal-bl div:nth-child(6) {
+  animation-delay: 300ms;
+}
+.animated-loader.diagonal-bl div:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+.animated-loader.diagonal-br div:nth-child(9) {
+  animation-delay: 0ms;
+}
+.animated-loader.diagonal-br div:nth-child(6),
+.animated-loader.diagonal-br div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.diagonal-br div:nth-child(3),
+.animated-loader.diagonal-br div:nth-child(5),
+.animated-loader.diagonal-br div:nth-child(7) {
+  animation-delay: 200ms;
+}
+.animated-loader.diagonal-br div:nth-child(2),
+.animated-loader.diagonal-br div:nth-child(4) {
+  animation-delay: 300ms;
+}
+.animated-loader.diagonal-br div:nth-child(1) {
+  animation-delay: 400ms;
+}
+
+.animated-loader.ripple-out div:nth-child(5) {
+  animation-delay: 0ms;
+}
+.animated-loader.ripple-out div:nth-child(2),
+.animated-loader.ripple-out div:nth-child(4),
+.animated-loader.ripple-out div:nth-child(6),
+.animated-loader.ripple-out div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.ripple-out div:nth-child(1),
+.animated-loader.ripple-out div:nth-child(3),
+.animated-loader.ripple-out div:nth-child(7),
+.animated-loader.ripple-out div:nth-child(9) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.ripple-in div:nth-child(1),
+.animated-loader.ripple-in div:nth-child(3),
+.animated-loader.ripple-in div:nth-child(7),
+.animated-loader.ripple-in div:nth-child(9) {
+  animation-delay: 0ms;
+}
+.animated-loader.ripple-in div:nth-child(2),
+.animated-loader.ripple-in div:nth-child(4),
+.animated-loader.ripple-in div:nth-child(6),
+.animated-loader.ripple-in div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.ripple-in div:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.cross div:nth-child(5) {
+  animation-delay: 0ms;
+}
+.animated-loader.cross div:nth-child(2),
+.animated-loader.cross div:nth-child(4),
+.animated-loader.cross div:nth-child(6),
+.animated-loader.cross div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.cross div:nth-child(1),
+.animated-loader.cross div:nth-child(3),
+.animated-loader.cross div:nth-child(7),
+.animated-loader.cross div:nth-child(9) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.diamond div:nth-child(5) {
+  animation-delay: 0ms;
+}
+.animated-loader.diamond div:nth-child(2),
+.animated-loader.diamond div:nth-child(4),
+.animated-loader.diamond div:nth-child(6),
+.animated-loader.diamond div:nth-child(8) {
+  animation-delay: 100ms;
+}
+.animated-loader.diamond div:nth-child(1),
+.animated-loader.diamond div:nth-child(3),
+.animated-loader.diamond div:nth-child(7),
+.animated-loader.diamond div:nth-child(9) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.x-shape div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.x-shape div:nth-child(3),
+.animated-loader.x-shape div:nth-child(7) {
+  animation-delay: 100ms;
+}
+.animated-loader.x-shape div:nth-child(5) {
+  animation-delay: 200ms;
+}
+.animated-loader.x-shape div:nth-child(9) {
+  animation-delay: 300ms;
+}
+.animated-loader.x-shape div:nth-child(2),
+.animated-loader.x-shape div:nth-child(4),
+.animated-loader.x-shape div:nth-child(6),
+.animated-loader.x-shape div:nth-child(8) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.corners-only div:nth-child(1),
+.animated-loader.corners-only div:nth-child(3),
+.animated-loader.corners-only div:nth-child(7),
+.animated-loader.corners-only div:nth-child(9) {
+  animation-delay: 0ms;
+}
+
+.animated-loader.corners-sync div:nth-child(1),
+.animated-loader.corners-sync div:nth-child(3),
+.animated-loader.corners-sync div:nth-child(7),
+.animated-loader.corners-sync div:nth-child(9) {
+  animation-delay: 0ms;
+}
+.animated-loader.corners-sync div:nth-child(2),
+.animated-loader.corners-sync div:nth-child(4),
+.animated-loader.corners-sync div:nth-child(5),
+.animated-loader.corners-sync div:nth-child(6),
+.animated-loader.corners-sync div:nth-child(8) {
+  animation-delay: 150ms;
+}
+
+.animated-loader.stripes-h div:nth-child(-n + 3) {
+  animation-delay: 0ms;
+}
+.animated-loader.stripes-h div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 150ms;
+}
+.animated-loader.stripes-h div:nth-child(n + 7) {
+  animation-delay: 300ms;
+}
+
+.animated-loader.stripes-v div:nth-child(3n + 1) {
+  animation-delay: 0ms;
+}
+.animated-loader.stripes-v div:nth-child(3n + 2) {
+  animation-delay: 150ms;
+}
+.animated-loader.stripes-v div:nth-child(3n) {
+  animation-delay: 300ms;
+}
+
+.animated-loader.rows-alt div:nth-child(-n + 3) {
+  animation-delay: 0ms;
+}
+.animated-loader.rows-alt div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.rows-alt div:nth-child(n + 7) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.spiral-cw div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.spiral-cw div:nth-child(2) {
+  animation-delay: 100ms;
+}
+.animated-loader.spiral-cw div:nth-child(3) {
+  animation-delay: 200ms;
+}
+.animated-loader.spiral-cw div:nth-child(6) {
+  animation-delay: 300ms;
+}
+.animated-loader.spiral-cw div:nth-child(9) {
+  animation-delay: 400ms;
+}
+.animated-loader.spiral-cw div:nth-child(8) {
+  animation-delay: 500ms;
+}
+.animated-loader.spiral-cw div:nth-child(7) {
+  animation-delay: 600ms;
+}
+.animated-loader.spiral-cw div:nth-child(4) {
+  animation-delay: 700ms;
+}
+.animated-loader.spiral-cw div:nth-child(5) {
+  animation-delay: 800ms;
+}
+
+.animated-loader.spiral-ccw div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.spiral-ccw div:nth-child(4) {
+  animation-delay: 100ms;
+}
+.animated-loader.spiral-ccw div:nth-child(7) {
+  animation-delay: 200ms;
+}
+.animated-loader.spiral-ccw div:nth-child(8) {
+  animation-delay: 300ms;
+}
+.animated-loader.spiral-ccw div:nth-child(9) {
+  animation-delay: 400ms;
+}
+.animated-loader.spiral-ccw div:nth-child(6) {
+  animation-delay: 500ms;
+}
+.animated-loader.spiral-ccw div:nth-child(3) {
+  animation-delay: 600ms;
+}
+.animated-loader.spiral-ccw div:nth-child(2) {
+  animation-delay: 700ms;
+}
+.animated-loader.spiral-ccw div:nth-child(5) {
+  animation-delay: 800ms;
+}
+
+.animated-loader.snake div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.snake div:nth-child(2) {
+  animation-delay: 100ms;
+}
+.animated-loader.snake div:nth-child(3) {
+  animation-delay: 200ms;
+}
+.animated-loader.snake div:nth-child(6) {
+  animation-delay: 300ms;
+}
+.animated-loader.snake div:nth-child(9) {
+  animation-delay: 400ms;
+}
+.animated-loader.snake div:nth-child(8) {
+  animation-delay: 500ms;
+}
+.animated-loader.snake div:nth-child(7) {
+  animation-delay: 600ms;
+}
+.animated-loader.snake div:nth-child(4) {
+  animation-delay: 700ms;
+}
+.animated-loader.snake div:nth-child(5) {
+  animation-delay: 800ms;
+}
+
+.animated-loader.snake-rev div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.snake-rev div:nth-child(4) {
+  animation-delay: 100ms;
+}
+.animated-loader.snake-rev div:nth-child(7) {
+  animation-delay: 200ms;
+}
+.animated-loader.snake-rev div:nth-child(8) {
+  animation-delay: 300ms;
+}
+.animated-loader.snake-rev div:nth-child(9) {
+  animation-delay: 400ms;
+}
+.animated-loader.snake-rev div:nth-child(6) {
+  animation-delay: 500ms;
+}
+.animated-loader.snake-rev div:nth-child(3) {
+  animation-delay: 600ms;
+}
+.animated-loader.snake-rev div:nth-child(2) {
+  animation-delay: 700ms;
+}
+.animated-loader.snake-rev div:nth-child(5) {
+  animation-delay: 800ms;
+}
+
+.animated-loader.rain div:nth-child(-n + 3) {
+  animation-delay: 0ms;
+}
+.animated-loader.rain div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.rain div:nth-child(n + 7) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.rain-rev div:nth-child(-n + 3) {
+  animation-delay: 200ms;
+}
+.animated-loader.rain-rev div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.rain-rev div:nth-child(n + 7) {
+  animation-delay: 0ms;
+}
+
+.animated-loader.waterfall div:nth-child(-n + 3) {
+  animation-delay: 0ms;
+}
+.animated-loader.waterfall div:nth-child(n + 4):nth-child(-n + 6) {
+  animation-delay: 100ms;
+}
+.animated-loader.waterfall div:nth-child(n + 7) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.breathing div {
+  animation-delay: 0ms;
+}
+.animated-loader.heartbeat div {
+  animation-delay: 0ms;
+}
+
+.animated-loader.twinkle div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.twinkle div:nth-child(2) {
+  animation-delay: 70ms;
+}
+.animated-loader.twinkle div:nth-child(3) {
+  animation-delay: 140ms;
+}
+.animated-loader.twinkle div:nth-child(4) {
+  animation-delay: 210ms;
+}
+.animated-loader.twinkle div:nth-child(5) {
+  animation-delay: 280ms;
+}
+.animated-loader.twinkle div:nth-child(6) {
+  animation-delay: 350ms;
+}
+.animated-loader.twinkle div:nth-child(7) {
+  animation-delay: 420ms;
+}
+.animated-loader.twinkle div:nth-child(8) {
+  animation-delay: 490ms;
+}
+.animated-loader.twinkle div:nth-child(9) {
+  animation-delay: 560ms;
+}
+
+.animated-loader.sparkle div:nth-child(1) {
+  animation-delay: 350ms;
+}
+.animated-loader.sparkle div:nth-child(2) {
+  animation-delay: 420ms;
+}
+.animated-loader.sparkle div:nth-child(3) {
+  animation-delay: 490ms;
+}
+.animated-loader.sparkle div:nth-child(4) {
+  animation-delay: 560ms;
+}
+.animated-loader.sparkle div:nth-child(5) {
+  animation-delay: 0ms;
+}
+.animated-loader.sparkle div:nth-child(6) {
+  animation-delay: 70ms;
+}
+.animated-loader.sparkle div:nth-child(7) {
+  animation-delay: 140ms;
+}
+.animated-loader.sparkle div:nth-child(8) {
+  animation-delay: 210ms;
+}
+.animated-loader.sparkle div:nth-child(9) {
+  animation-delay: 280ms;
+}
+
+.animated-loader.chaos div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.chaos div:nth-child(2) {
+  animation-delay: 150ms;
+}
+.animated-loader.chaos div:nth-child(3) {
+  animation-delay: 50ms;
+}
+.animated-loader.chaos div:nth-child(4) {
+  animation-delay: 400ms;
+}
+.animated-loader.chaos div:nth-child(5) {
+  animation-delay: 250ms;
+}
+.animated-loader.chaos div:nth-child(6) {
+  animation-delay: 500ms;
+}
+.animated-loader.chaos div:nth-child(7) {
+  animation-delay: 100ms;
+}
+.animated-loader.chaos div:nth-child(8) {
+  animation-delay: 350ms;
+}
+.animated-loader.chaos div:nth-child(9) {
+  animation-delay: 600ms;
+}
+
+.animated-loader.edge-cw div:nth-child(1) {
+  animation-delay: 0ms;
+}
+.animated-loader.edge-cw div:nth-child(2) {
+  animation-delay: 100ms;
+}
+.animated-loader.edge-cw div:nth-child(3) {
+  animation-delay: 200ms;
+}
+.animated-loader.edge-cw div:nth-child(6) {
+  animation-delay: 300ms;
+}
+.animated-loader.edge-cw div:nth-child(9) {
+  animation-delay: 400ms;
+}
+.animated-loader.edge-cw div:nth-child(8) {
+  animation-delay: 500ms;
+}
+.animated-loader.edge-cw div:nth-child(7) {
+  animation-delay: 600ms;
+}
+.animated-loader.edge-cw div:nth-child(4) {
+  animation-delay: 700ms;
+}
+.animated-loader.edge-cw div:nth-child(5) {
+  animation-delay: 800ms;
+}
+
+.animated-loader.border div:nth-child(1),
+.animated-loader.border div:nth-child(2),
+.animated-loader.border div:nth-child(3),
+.animated-loader.border div:nth-child(4),
+.animated-loader.border div:nth-child(6),
+.animated-loader.border div:nth-child(7),
+.animated-loader.border div:nth-child(8),
+.animated-loader.border div:nth-child(9) {
+  animation-delay: 0ms;
+}
+.animated-loader.border div:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+.animated-loader.plus-hollow div:nth-child(2) {
+  animation-delay: 0ms;
+}
+.animated-loader.plus-hollow div:nth-child(4) {
+  animation-delay: 100ms;
+}
+.animated-loader.plus-hollow div:nth-child(6) {
+  animation-delay: 200ms;
+}
+.animated-loader.plus-hollow div:nth-child(8) {
+  animation-delay: 300ms;
+}
+
+/* Visibility masks */
+.animated-loader.solo-center div:not(:nth-child(5)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.solo-tl div:not(:nth-child(1)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.solo-br div:not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.line-h-top
+  div:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.line-h-mid
+  div:not(:nth-child(4)):not(:nth-child(5)):not(:nth-child(6)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.line-h-bot
+  div:not(:nth-child(7)):not(:nth-child(8)):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.line-v-left
+  div:not(:nth-child(1)):not(:nth-child(4)):not(:nth-child(7)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.line-v-mid
+  div:not(:nth-child(2)):not(:nth-child(5)):not(:nth-child(8)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.line-v-right
+  div:not(:nth-child(3)):not(:nth-child(6)):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.line-diag-1
+  div:not(:nth-child(1)):not(:nth-child(5)):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.line-diag-2
+  div:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(7)) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.corners-only div:nth-child(2),
+.animated-loader.corners-only div:nth-child(4),
+.animated-loader.corners-only div:nth-child(5),
+.animated-loader.corners-only div:nth-child(6),
+.animated-loader.corners-only div:nth-child(8) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.plus-hollow div:nth-child(1),
+.animated-loader.plus-hollow div:nth-child(3),
+.animated-loader.plus-hollow div:nth-child(5),
+.animated-loader.plus-hollow div:nth-child(7),
+.animated-loader.plus-hollow div:nth-child(9) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.L-tl
+  div:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(
+    :nth-child(4)
+  ):not(:nth-child(7)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.L-tr
+  div:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(
+    :nth-child(6)
+  ):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.L-bl
+  div:not(:nth-child(1)):not(:nth-child(4)):not(:nth-child(7)):not(
+    :nth-child(8)
+  ):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.L-br
+  div:not(:nth-child(3)):not(:nth-child(6)):not(:nth-child(7)):not(
+    :nth-child(8)
+  ):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+
+.animated-loader.T-top
+  div:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(
+    :nth-child(5)
+  ):not(:nth-child(8)) {
+  opacity: 0;
+  animation: none;
+}
+.animated-loader.T-bot
+  div:not(:nth-child(2)):not(:nth-child(5)):not(:nth-child(7)):not(
+    :nth-child(8)
+  ):not(:nth-child(9)) {
+  opacity: 0;
+  animation: none;
+}
+
+/* When "Hover to animate" is on: pause all loaders until hover */
+.hover-only-animate .animated-loader div {
+  animation-play-state: paused;
+}
+.hover-only-animate .animated-loader:hover div {
+  animation-play-state: running;
+}
