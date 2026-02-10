@@ -1,17 +1,10 @@
-import { useState } from "react";
 import { BloomFilter } from "../components/bloom-filter";
 import { LoaderCard } from "../components/loader-cards";
 import { PATTERNS } from "../data/patterns";
 
 export function Gallery() {
-  const [hoverOnly, setHoverOnly] = useState(true);
-
   return (
-    <div
-      className={`min-h-screen bg-neutral-950 text-white p-10 overscroll-y-none ${
-        hoverOnly ? "hover-only-animate" : ""
-      }`}
-    >
+    <div className="min-h-screen bg-neutral-950 text-white p-10 overscroll-y-none">
       {/* Very performance heavy, so disabled by default */}
       <BloomFilter />
 
