@@ -6,7 +6,7 @@ import PlayPauseButton from "@/components/play-button";
 
 export function Gallery() {
   return (
-    <div className="min-h-screen bg-neutral-950 text-white p-10 overscroll-y-none">
+    <div className="min-h-screen bg-neutral-950 text-white  p-4 md:p-10 overscroll-y-none">
       <BloomFilter />
 
       <header className="mb-10 flex items-center justify-between">

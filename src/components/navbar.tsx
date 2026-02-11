@@ -92,7 +92,7 @@ function NavbarRoutes() {
 
 function MobileNavbar() {
   return (
-    <div className="flex items-center justify-center gap-1.5 bg-neutral-900 p-1 rounded-full md:hidden">
+    <div className="flex items-center justify-center gap-1.5 bg-neutral-900 p-1 rounded-full md:hidden pointer-events-auto">
       <BloomButton />
       <PlayPauseButton />
     </div>
