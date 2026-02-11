@@ -3,6 +3,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import { StudioControlsPanel } from "@/pages/studio/components/studio-controls-panel";
+import BloomButton from "./bloom-button";
+import PlayPauseButton from "./play-button";
 
 const NAV_WRAPPER_SIZE = { width: 500, height: 300 } as const;
 
@@ -45,21 +47,13 @@ function NavItem({ to, icon: Icon, label }: NavItemProps) {
   );
 }
 
-export default function Navbar() {
-  return (
-    <nav className="w-full h-20 bg-linear-to-t from-neutral-950 fixed bottom-0 left-0 z-50 flex items-center justify-center gap-1.5 pointer-events-none">
-      <NavbarRoutes />
-    </nav>
-  );
-}
-
 function NavbarRoutes() {
   const { pathname } = useLocation();
   const isStudio = pathname === "/studio";
 
   return (
     <div
-      className="pointer-events-auto fixed bottom-3 flex items-stretch justify-center"
+      className="pointer-events-auto fixed bottom-3 items-stretch justify-center hidden md:flex"
       style={NAV_WRAPPER_SIZE}
     >
       <motion.div
@@ -93,5 +87,23 @@ function NavbarRoutes() {
         </div>
       </div>
     </div>
+  );
+}
+
+function MobileNavbar() {
+  return (
+    <div className="flex items-center justify-center gap-1.5 bg-neutral-900 p-1 rounded-full md:hidden">
+      <BloomButton />
+      <PlayPauseButton />
+    </div>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <nav className="w-full h-20 bg-linear-to-t from-neutral-950 fixed bottom-0 left-0 z-50 flex items-center justify-center gap-1.5 pointer-events-none">
+      <NavbarRoutes />
+      <MobileNavbar />
+    </nav>
   );
 }

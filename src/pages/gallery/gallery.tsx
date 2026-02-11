@@ -23,7 +23,7 @@ export function Gallery() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className=" items-center gap-2 hidden md:flex">
           <BloomButton />
           <PlayPauseButton />
         </div>
