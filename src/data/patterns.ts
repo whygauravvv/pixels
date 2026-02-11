@@ -1,4 +1,12 @@
-export type LoaderColor = "sky" | "amber" | "rose" | "emerald";
+export type LoaderColor =
+  | "sky"
+  | "amber"
+  | "rose"
+  | "emerald"
+  | "violet"
+  | "cyan"
+  | "lime"
+  | "fuchsia";
 
 export interface PatternEntry {
   pattern: string;

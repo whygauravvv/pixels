@@ -19,7 +19,7 @@ function NavbarRoutes() {
   return (
     <div
       className="pointer-events-auto fixed bottom-3 flex items-stretch justify-center"
-      style={{ width: 400, height: 240 }}
+      style={{ width: 500, height: 300 }}
     >
       <motion.div
         layout
@@ -27,7 +27,7 @@ function NavbarRoutes() {
         animate={
           isStudio
             ? { scaleX: 1, scaleY: 1, borderRadius: 16 }
-            : { scaleX: 0.2, scaleY: 0.17, borderRadius: 100 }
+            : { scaleX: 0.175, scaleY: 0.135, borderRadius: 100 }
         }
         transition={{
           duration: 0.4,
@@ -41,11 +41,11 @@ function NavbarRoutes() {
           {isStudio && (
             <motion.div
               key="studio-controls"
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               transition={{ duration: 0.1 }}
-              className="p-1 overflow-hidden"
+              className="m-1 p-2"
             >
               <StudioControlsPanel />
             </motion.div>

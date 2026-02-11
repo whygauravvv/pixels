@@ -1,8 +1,9 @@
-import { BloomFilter } from "../components/bloom-filter";
 import type { LoaderColor } from "../data/patterns";
 import { useSettings } from "@/context/settings-context";
-import { useStudioSettings, stepToDelayMs } from "@/context/studio-settings-context";
-import { Lightbulb } from "lucide-react";
+import {
+  useStudioSettings,
+  stepToDelayMs,
+} from "@/context/studio-settings-context";
 import { PlayPauseIcon } from "@/assets/PlayPauseIcon";
 
 const COLOR_GLOW: Record<LoaderColor, string> = {
@@ -10,15 +11,17 @@ const COLOR_GLOW: Record<LoaderColor, string> = {
   amber: "bg-amber-400",
   rose: "bg-rose-400",
   emerald: "bg-emerald-400",
+  violet: "bg-violet-400",
+  cyan: "bg-cyan-400",
+  lime: "bg-lime-400",
+  fuchsia: "bg-fuchsia-400",
 };
 
 export function Studio() {
   const { steps, duration, color, cycleCellStep } = useStudioSettings();
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white p-10">
-      <BloomFilter />
-
+    <div className=" bg-neutral-950 text-white p-10 h-[65vh]">
       <header className="mb-10 flex items-center justify-between">
         <div>
           <div className="flex items-center  gap-2 ">
@@ -34,75 +37,47 @@ export function Studio() {
         </div>
 
         <div className="flex items-center gap-2">
-          <BloomButton />
           <PlayPauseButton />
         </div>
       </header>
 
-      <div className="max-w-2xl mx-auto space-y-8">
-        {/* Tap the dots to set step (0=off, 1–9) or cycle */}
-        <section className="flex flex-col items-center">
-          <p className="text-sm text-stone-400 mb-3">
-            Tap a dot: 1–9 = when it lights up, 0 = off
-          </p>
-          <div className="animated-loader bloom grid grid-cols-3 gap-0.5 w-fit overflow-visible">
-            {steps.map((step, index) => {
-              const isOff = step === 0;
-              const delayMs = stepToDelayMs(step, duration, steps);
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => cycleCellStep(index)}
-                  className="relative flex items-center justify-center size-10 sm:size-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                  title={
+      <div className="flex items-center justify-center w-full h-full">
+        <div className="animated-loader bloom grid grid-cols-3 gap-0.5 w-fit overflow-visible">
+          {steps.map((step, index) => {
+            const isOff = step === 0;
+            const delayMs = stepToDelayMs(step, duration, steps);
+            return (
+              <button
+                key={index}
+                type="button"
+                onClick={() => cycleCellStep(index)}
+                className="relative flex items-center justify-center size-24 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                title={
+                  isOff
+                    ? "Off — tap to turn on"
+                    : `Step ${step} — tap to change or turn off`
+                }
+              >
+                <div
+                  className={`absolute inset-0 ${COLOR_GLOW[color]}`}
+                  style={
                     isOff
-                      ? "Off — tap to turn on"
-                      : `Step ${step} — tap to change or turn off`
+                      ? { animation: "none", opacity: 0 }
+                      : {
+                          animation: `loader-pulse ${duration}ms ease-in-out infinite`,
+                          animationDelay: `${delayMs}ms`,
+                        }
                   }
-                >
-                  <div
-                    className={`absolute inset-0 ${COLOR_GLOW[color]}`}
-                    style={
-                      isOff
-                        ? { animation: "none", opacity: 0 }
-                        : {
-                            animation: `loader-pulse ${duration}ms ease-in-out infinite`,
-                            animationDelay: `${delayMs}ms`,
-                          }
-                    }
-                  />
-                  <span className="relative z-10 text-xs font-semibold text-white/90 drop-shadow-sm">
-                    {isOff ? "0" : step}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </section>
+                />
+                <span className="relative z-10 text-xs font-semibold text-white/90 drop-shadow-sm">
+                  {isOff ? "0" : step}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
-  );
-}
-
-function BloomButton() {
-  const { bloomEnabled, toggleBloom } = useSettings();
-
-  return (
-    <button
-      type="button"
-      onClick={toggleBloom}
-      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-800 outline-none ring-neutral-600 transition-colors hover:bg-neutral-700 focus-visible:ring-2"
-      aria-label={bloomEnabled ? "Turn off bloom" : "Turn on bloom"}
-    >
-      <Lightbulb
-        size={20}
-        className={`shrink-0 transition-colors ${
-          bloomEnabled ? "text-yellow-400" : "text-neutral-500"
-        }`}
-        style={bloomEnabled ? { filter: "url(#bloom)" } : undefined}
-      />
-    </button>
   );
 }
 

@@ -5,6 +5,10 @@ const COLOR_CLASS: Record<LoaderColor, string> = {
   amber: "*:bg-amber-400",
   rose: "*:bg-rose-400",
   emerald: "*:bg-emerald-400",
+  violet: "*:bg-violet-400",
+  cyan: "*:bg-cyan-400",
+  lime: "*:bg-lime-400",
+  fuchsia: "*:bg-fuchsia-400",
 };
 
 interface CustomLoaderPreviewProps {

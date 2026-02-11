@@ -5,6 +5,10 @@ const COLOR_CLASS: Record<LoaderColor, string> = {
   amber: "*:bg-amber-500",
   rose: "*:bg-rose-500",
   emerald: "*:bg-emerald-500",
+  violet: "*:bg-violet-500",
+  cyan: "*:bg-cyan-500",
+  lime: "*:bg-lime-500",
+  fuchsia: "*:bg-fuchsia-500",
 };
 
 interface LoaderCardProps {
