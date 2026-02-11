@@ -3,15 +3,18 @@ import { Gallery } from "./pages/gallery";
 import { Studio } from "./pages/studio";
 import Navbar from "./components/navbar";
 import { SettingsProvider } from "./context/settings-context";
+import { StudioSettingsProvider } from "./context/studio-settings-context";
 
 function App() {
   return (
     <SettingsProvider>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Gallery />} />
-        <Route path="/studio" element={<Studio />} />
-      </Routes>
+      <StudioSettingsProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Gallery />} />
+          <Route path="/studio" element={<Studio />} />
+        </Routes>
+      </StudioSettingsProvider>
     </SettingsProvider>
   );
 }

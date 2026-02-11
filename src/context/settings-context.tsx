@@ -22,7 +22,7 @@ const SettingsContext = createContext<SettingsContextValue | undefined>(
 export function SettingsProvider({ children }: { children: ReactNode }) {
   // Match existing defaults: bloom off by default, hover-only on by default.
   const [bloomEnabled, setBloomEnabled] = useState(false);
-  const [hoverOnly, setHoverOnly] = useState(true);
+  const [hoverOnly, setHoverOnly] = useState(false);
 
   // Keep the root element's classes in sync with bloom setting.
   useEffect(() => {
@@ -71,4 +71,3 @@ export function useSettings(): SettingsContextValue {
   }
   return ctx;
 }
-

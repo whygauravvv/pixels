@@ -1,7 +1,8 @@
 import { BrushIcon, HomeIcon } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "../lib/utils";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import { StudioControlsPanel } from "./studio-controls-panel";
 
 export default function Navbar() {
   return (
@@ -13,41 +14,69 @@ export default function Navbar() {
 
 function NavbarRoutes() {
   const location = useLocation();
+  const isStudio = location.pathname === "/studio";
+
   return (
-    <motion.div
-      animate={
-        location.pathname === "/studio"
-          ? { width: 360, height: 180, borderRadius: 20 }
-          : { width: 80, height: 40, borderRadius: 50 }
-      }
-      transition={{
-        duration: 0.4,
-        type: "spring",
-      }}
-      className="bg-neutral-900 w-20 h-10 py-1 flex items-end justify-center px-2 gap-1 pointer-events-auto fixed bottom-3"
+    <div
+      className="pointer-events-auto fixed bottom-3 flex items-stretch justify-center"
+      style={{ width: 400, height: 240 }}
     >
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          cn(
-            "flex  rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
-            isActive && "text-white",
-          )
+      <motion.div
+        layout
+        style={{ originX: 0.5, originY: 1 }}
+        animate={
+          isStudio
+            ? { scaleX: 1, scaleY: 1, borderRadius: 16 }
+            : { scaleX: 0.2, scaleY: 0.17, borderRadius: 100 }
         }
-      >
-        <HomeIcon size={18} />
-      </NavLink>
-      <NavLink
-        to="/studio"
-        className={({ isActive }) =>
-          cn(
-            "flex  rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
-            isActive && "text-white",
-          )
-        }
-      >
-        <BrushIcon size={18} />
-      </NavLink>
-    </motion.div>
+        transition={{
+          duration: 0.4,
+          type: "spring",
+        }}
+        className="absolute inset-0 bg-neutral-900 shadow-lg shadow-black/40"
+      />
+
+      <div className="relative z-10 h-full w-full py-1 px-2 flex flex-col items-stretch justify-end gap-2 overflow-hidden">
+        <AnimatePresence mode="wait" initial={false}>
+          {isStudio && (
+            <motion.div
+              key="studio-controls"
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+              transition={{ duration: 0.1 }}
+              className="p-1 overflow-hidden"
+            >
+              <StudioControlsPanel />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="flex items-center justify-center gap-1.5">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              cn(
+                "flex rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
+                isActive && "text-white",
+              )
+            }
+          >
+            <HomeIcon size={18} />
+          </NavLink>
+          <NavLink
+            to="/studio"
+            className={({ isActive }) =>
+              cn(
+                "flex rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
+                isActive && "text-white",
+              )
+            }
+          >
+            <BrushIcon size={18} />
+          </NavLink>
+        </div>
+      </div>
+    </div>
   );
 }
