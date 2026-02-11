@@ -17,7 +17,7 @@
 @keyframes loader-pulse {
   0%,
   100% {
-    opacity: 0.1;
+    opacity: 0;
   }
   50% {
     opacity: 1;
@@ -756,5 +756,8 @@
   animation-play-state: paused;
 }
 .hover-only-animate .animated-loader:hover div {
+  animation-play-state: running;
+}
+.hover-only-animate .loader-card:hover .animated-loader div {
   animation-play-state: running;
 }

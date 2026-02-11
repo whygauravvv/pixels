@@ -1,8 +1,49 @@
-import { BrushIcon, HomeIcon } from "lucide-react";
+import { BrushIcon, HomeIcon, type LucideIcon } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
-import { StudioControlsPanel } from "./studio-controls-panel";
+import { StudioControlsPanel } from "@/pages/studio/components/studio-controls-panel";
+
+const NAV_WRAPPER_SIZE = { width: 500, height: 300 } as const;
+
+const STUDIO_LAYOUT = { scaleX: 1, scaleY: 1, borderRadius: 16 } as const;
+const COMPACT_LAYOUT = {
+  scaleX: 0.175,
+  scaleY: 0.135,
+  borderRadius: 100,
+} as const;
+
+const LAYOUT_TRANSITION = {
+  duration: 0.4,
+  type: "spring" as const,
+};
+
+const STUDIO_PANEL_TRANSITION = {
+  duration: 0.1,
+};
+
+type NavItemProps = {
+  to: string;
+  icon: LucideIcon;
+  label: string;
+};
+
+function NavItem({ to, icon: Icon, label }: NavItemProps) {
+  return (
+    <NavLink
+      to={to}
+      aria-label={label}
+      className={({ isActive }) =>
+        cn(
+          "flex rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
+          isActive && "text-white",
+        )
+      }
+    >
+      <Icon size={18} aria-hidden="true" />
+    </NavLink>
+  );
+}
 
 export default function Navbar() {
   return (
@@ -13,26 +54,20 @@ export default function Navbar() {
 }
 
 function NavbarRoutes() {
-  const location = useLocation();
-  const isStudio = location.pathname === "/studio";
+  const { pathname } = useLocation();
+  const isStudio = pathname === "/studio";
 
   return (
     <div
       className="pointer-events-auto fixed bottom-3 flex items-stretch justify-center"
-      style={{ width: 500, height: 300 }}
+      style={NAV_WRAPPER_SIZE}
     >
       <motion.div
         layout
+        initial={false}
         style={{ originX: 0.5, originY: 1 }}
-        animate={
-          isStudio
-            ? { scaleX: 1, scaleY: 1, borderRadius: 16 }
-            : { scaleX: 0.175, scaleY: 0.135, borderRadius: 100 }
-        }
-        transition={{
-          duration: 0.4,
-          type: "spring",
-        }}
+        animate={isStudio ? STUDIO_LAYOUT : COMPACT_LAYOUT}
+        transition={LAYOUT_TRANSITION}
         className="absolute inset-0 bg-neutral-900 shadow-lg shadow-black/40"
       />
 
@@ -44,7 +79,7 @@ function NavbarRoutes() {
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-              transition={{ duration: 0.1 }}
+              transition={STUDIO_PANEL_TRANSITION}
               className="m-1 p-2"
             >
               <StudioControlsPanel />
@@ -53,28 +88,8 @@ function NavbarRoutes() {
         </AnimatePresence>
 
         <div className="flex items-center justify-center gap-1.5">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              cn(
-                "flex rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
-                isActive && "text-white",
-              )
-            }
-          >
-            <HomeIcon size={18} />
-          </NavLink>
-          <NavLink
-            to="/studio"
-            className={({ isActive }) =>
-              cn(
-                "flex rounded-full p-1.5 shrink-0 items-center justify-center duration-200 group text-neutral-500",
-                isActive && "text-white",
-              )
-            }
-          >
-            <BrushIcon size={18} />
-          </NavLink>
+          <NavItem to="/" icon={HomeIcon} label="Home" />
+          <NavItem to="/studio" icon={BrushIcon} label="Studio" />
         </div>
       </div>
     </div>

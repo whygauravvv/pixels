@@ -1,85 +1,11 @@
-<svg width="94" height="94" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="11.3333" y="11.3334" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-<rect x="36.5186" y="11.3334" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-<rect x="61.7036" y="11.3334" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-<rect x="11.3333" y="36.5186" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-<rect x="36.5186" y="36.5186" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-<rect x="61.7036" y="36.5186" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-<rect x="11.3333" y="61.7037" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-<rect x="36.5186" y="61.7037" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-<rect x="61.7036" y="61.7037" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-<g filter="url(#filter0_f_15_2)" style="mix-blend-mode:screen">
-<rect x="11.3333" y="11.3334" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter1_f_15_2)" style="mix-blend-mode:screen">
-<rect x="36.5186" y="11.3334" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter2_f_15_2)" style="mix-blend-mode:screen">
-<rect x="61.7036" y="11.3334" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter3_f_15_2)" style="mix-blend-mode:screen">
-<rect x="11.3333" y="36.5186" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter4_f_15_2)" style="mix-blend-mode:screen">
-<rect x="36.5186" y="36.5186" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter5_f_15_2)" style="mix-blend-mode:screen">
-<rect x="61.7036" y="36.5186" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter6_f_15_2)" style="mix-blend-mode:screen">
-<rect x="11.3333" y="61.7037" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter7_f_15_2)" style="mix-blend-mode:screen">
-<rect x="36.5186" y="61.7037" width="20.1481" height="20.1481" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
-</g>
-<g filter="url(#filter8_f_15_2)" style="mix-blend-mode:screen">
-<rect x="61.7036" y="61.7037" width="20.1481" height="20.1481" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
-</g>
-<defs>
-<filter id="filter0_f_15_2" x="-8.10623e-05" y="4.1008e-05" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter1_f_15_2" x="25.1852" y="4.1008e-05" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter2_f_15_2" x="50.3703" y="4.1008e-05" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter3_f_15_2" x="-8.10623e-05" y="25.1852" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter4_f_15_2" x="25.1852" y="25.1852" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter5_f_15_2" x="50.3703" y="25.1852" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter6_f_15_2" x="-8.10623e-05" y="50.3704" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter7_f_15_2" x="25.1852" y="50.3704" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-<filter id="filter8_f_15_2" x="50.3703" y="50.3704" width="42.8149" height="42.8149" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="5.66667" result="effect1_foregroundBlur_15_2"/>
-</filter>
-</defs>
+<svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="20.1481" height="20.1481" rx="1" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
+<rect x="25.1853" width="20.1481" height="20.1481" rx="1" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
+<rect x="50.3704" width="20.1481" height="20.1481" rx="1" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
+<rect y="25.1852" width="20.1481" height="20.1481" rx="1" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
+<rect x="25.1853" y="25.1852" width="20.1481" height="20.1481" rx="1" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
+<rect x="50.3704" y="25.1852" width="20.1481" height="20.1481" rx="1" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
+<rect y="50.3704" width="20.1481" height="20.1481" rx="1" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
+<rect x="25.1853" y="50.3704" width="20.1481" height="20.1481" rx="1" fill="#0F99FF" style="fill:#0F99FF;fill:color(display-p3 0.0588 0.6000 1.0000);fill-opacity:1;"/>
+<rect x="50.3704" y="50.3704" width="20.1481" height="20.1481" rx="1" fill="#FF4400" style="fill:#FF4400;fill:color(display-p3 1.0000 0.2667 0.0000);fill-opacity:1;"/>
 </svg>

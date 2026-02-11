@@ -1,10 +1,8 @@
 import { useState } from "react";
-import type { LoaderColor } from "@/data/patterns";
 import {
   useStudioSettings,
   DEFAULT_DURATION,
 } from "@/context/studio-settings-context";
-import { useSettings } from "@/context/settings-context";
 import {
   Popover,
   PopoverContent,
@@ -13,30 +11,9 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { PlayPauseIcon } from "@/assets/PlayPauseIcon";
-
-const COLORS: LoaderColor[] = [
-  "sky",
-  "amber",
-  "rose",
-  "emerald",
-  "violet",
-  "cyan",
-  "lime",
-  "fuchsia",
-];
-
-const COLOR_BG_CLASS: Record<LoaderColor, string> = {
-  sky: "bg-sky-500",
-  amber: "bg-amber-500",
-  rose: "bg-rose-500",
-  emerald: "bg-emerald-500",
-  violet: "bg-violet-500",
-  cyan: "bg-cyan-500",
-  lime: "bg-lime-500",
-  fuchsia: "bg-fuchsia-500",
-};
+import { LOADER_COLORS, LOADER_COLOR_BG_500 } from "@/data/loader-colors";
+import PlayPauseButton from "@/components/play-button";
+import BloomButton from "@/components/bloom-button";
 
 const PRESETS: { name: string; delays: number[] }[] = [
   { name: "Pulse", delays: [0, 0, 0, 0, 0, 0, 0, 0, 0] },
@@ -206,7 +183,7 @@ export function StudioControlsPanel() {
                 <button
                   type="button"
                   aria-label="Choose loader color"
-                  className={`size-10 rounded-full border border-stone-700 shadow-sm transition-transform hover:scale-105 ${COLOR_BG_CLASS[color]}`}
+                  className={`size-10 rounded-full border border-stone-700 shadow-sm transition-transform hover:scale-105 ${LOADER_COLOR_BG_500[color]}`}
                 />
               </PopoverTrigger>
               <PopoverContent
@@ -223,13 +200,13 @@ export function StudioControlsPanel() {
                   </PopoverDescription>
                 </PopoverHeader>
                 <div className="grid grid-cols-4 gap-2">
-                  {COLORS.map((c) => (
+                  {LOADER_COLORS.map((c) => (
                     <button
                       key={c}
                       type="button"
                       onClick={() => setColor(c)}
                       aria-label={c}
-                      className={`size-8 rounded-full border transition-transform hover:scale-105 ${COLOR_BG_CLASS[c]} ${
+                      className={`size-8 rounded-full border transition-transform hover:scale-105 ${LOADER_COLOR_BG_500[c]} ${
                         color === c
                           ? "ring-2 ring-sky-400 border-transparent"
                           : "border-stone-700"
@@ -247,38 +224,12 @@ export function StudioControlsPanel() {
               <span className="text-[10px] text-stone-500">Loader color</span>
             </div>
           </div>
-
-          <PlayPauseButton />
+          <div className="flex items-center gap-2">
+            <PlayPauseButton />
+            <BloomButton />
+          </div>
         </div>
       </section>
     </div>
-  );
-}
-
-function PlayPauseButton() {
-  const { hoverOnly, toggleHoverOnly } = useSettings();
-  // "Playing" = not hover-only (animations run automatically)
-  const isPlaying = !hoverOnly;
-
-  return (
-    <Tooltip>
-      <TooltipTrigger>
-        <button
-          type="button"
-          onClick={toggleHoverOnly}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-800 text-neutral-500 outline-none ring-neutral-600 transition-colors hover:bg-neutral-700 focus-visible:ring-2"
-          aria-label={
-            isPlaying
-              ? "Pause animations (hover to animate)"
-              : "Play animations"
-          }
-        >
-          <PlayPauseIcon isPlaying={isPlaying} />
-        </button>
-      </TooltipTrigger>
-      <TooltipContent>
-        {isPlaying ? "Pause animations" : "Play animations"}
-      </TooltipContent>
-    </Tooltip>
   );
 }
