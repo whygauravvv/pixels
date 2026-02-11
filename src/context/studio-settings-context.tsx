@@ -32,37 +32,35 @@ export function delaysToSteps(
   );
 }
 
-/**
- * Step → delay in ms, compressed so that only the steps that are
- * actually used (across all cells) are spread across the full cycle.
- *
- * - step 0: off (no delay, handled separately)
- * - steps > 0: mapped to their rank among the used steps
- */
 export function stepToDelayMs(
   step: number,
   durationMs: number,
   allSteps: number[],
 ): number {
-  if (step < 1) return 0;
+  // Step 0 = off (no delay; handled by the caller).
+  if (step < 1 || durationMs <= 0) return 0;
 
-  // Unique, sorted list of steps that are actually used (ignoring 0 / off).
+  /**
+   * We space delays evenly across the full cycle based on the *distinct*
+   * non‑zero steps that are actually used in the grid.
+   *
+   * - Fewer active steps → larger slices (smoother, no wasted segments)
+   * - Multiple cells with the same step share the same delay (glow together)
+   * - Delays are zero‑based: the earliest step fires at t = 0
+   */
   const usedSteps = Array.from(new Set(allSteps.filter((s) => s > 0))).sort(
     (a, b) => a - b,
   );
 
-  if (usedSteps.length === 0) return 0;
+  const count = usedSteps.length;
+  if (count === 0) return 0;
 
   const index = usedSteps.indexOf(step);
   if (index === -1) return 0;
 
-  if (usedSteps.length === 1) {
-    // Only one active step: just fire at the start of the cycle.
-    return 0;
-  }
-
-  const t = (index / (usedSteps.length - 1)) * durationMs;
-  return t;
+  const slice = durationMs / count;
+  // Zero‑based: first used step → 0ms, next → 1*slice, etc.
+  return slice * index;
 }
 
 type StudioSettingsContextValue = {
