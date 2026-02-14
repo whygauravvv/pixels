@@ -3,7 +3,7 @@
 Pixels is a **collection of beautiful pixel loaders** for the web..  
 Use the gallery to browse premade patterns or you can make your own with the studio.
 
-![Pixels – Beautiful loaders for the web](./public/og.jpeg)
+![Pixels – Beautiful loaders for the web](./public/og.webp)
 
 ## The Idea
 
